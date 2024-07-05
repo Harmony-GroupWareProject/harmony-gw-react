@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../css/AprNavbar.css';
 import TemplateModal from './DocTemplate/TemplateModal';
 
-const AprNavbar = () => {
+const AprNavbar = ({onSelect}) => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -19,7 +19,7 @@ const AprNavbar = () => {
     <div className="navbar">
       <div className="navbar-item">
         <button onClick={openModal}>Write</button>
-        <TemplateModal isOpen={modalIsOpen} modalClose={closeModal} />
+        <TemplateModal isOpen={modalIsOpen} modalClose={closeModal} onSelect={onSelect}/>
       </div>
     </div>
   );

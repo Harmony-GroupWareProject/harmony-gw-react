@@ -1,19 +1,28 @@
 // src/App.js
-import React from 'react';
-import Sidebar from '../../components/Approval/AprSidebar';
+import { useState } from 'react';
+import AprSidebar from '../../components/Approval/AprSidebar';
 import AprNavbar from '../../components/Approval/AprNavbar';
-import Content from '../../components/Approval/AprContent';
+import AprContent from '../../components/Approval/AprContent';
+import TemplateEditor from '../../components/Approval/DocTemplate/TemplateEditor';
 import '../css/Approval.css';
-import TemplateModal from '../../components/Approval/DocTemplate/TemplateModal'
+import { useLocation } from 'react-router-dom';
 
 const Approval = () => {
+  const location = useLocation();
+  const [selectedTemplateId, setSelectedTemplateId] = useState(null);
+
   return (
     <div className="app">
-      <Sidebar />
+      <AprSidebar />
       <div className="main-content">
-        <AprNavbar />
-        <Content />
-        <TemplateModal />
+        {!selectedTemplateId ? (
+          <>
+            <AprNavbar onSelect={setSelectedTemplateId} />
+            <AprContent />
+          </>
+        ) : (
+          <TemplateEditor templateId={selectedTemplateId} />
+        )}
       </div>
     </div>
   );

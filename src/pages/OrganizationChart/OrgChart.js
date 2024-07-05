@@ -10,7 +10,7 @@ export default function OrgChart() {
     const [treeData, setTreeData] = useState([]);
 
     
-
+    // DB에서 데이터 받아오기 
     useEffect(() => {
         const fetchOrgEmpData = async () => {
             const token = localStorage.getItem("token");
@@ -21,8 +21,8 @@ export default function OrgChart() {
                     }
                 });
                 const data = response.data;  // Fixed to remove unnecessary await
-                setOrgList(data.orgList);
-                setEmpList(data.empList);
+                setOrgList(data.orgList); // 조직 리스트
+                setEmpList(data.empList); // 사원 리스트
             } catch (error) {
                 console.error('Error fetching org data:', error);
             }

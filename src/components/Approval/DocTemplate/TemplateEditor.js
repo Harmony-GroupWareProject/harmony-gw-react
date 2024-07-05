@@ -54,7 +54,7 @@ const TemplateEditor = ({ templateId }) => {
     <div>
       {template ? (
         <div>
-          <h2>{template.name}</h2>
+          {/* <h2>{template.name}</h2> */}
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </div>
       ) : (

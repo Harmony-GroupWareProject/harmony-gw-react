@@ -47,6 +47,7 @@ const App = () => {
   const handleDateChange = (date) => {
     setSelectedDate(date);
     console.log("Selected date:", date);
+    console.log('변경');
   };
 
   return (

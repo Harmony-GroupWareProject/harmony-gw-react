@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"
-import MenuSidebar from "../components/MenuSidebar";
+import MainMenuSidebar from "../components/MainMenuSidebar";
 import './css/Home.css'
 import ContentArea from "./MainContentArea";
 
@@ -14,7 +14,7 @@ const Home = ({ onLogout }) => {
 
     return (
         <div className="main-container">
-            <MenuSidebar setActiveMenu={setActiveMenu} 
+            <MainMenuSidebar setActiveMenu={setActiveMenu} 
                         handleLogout={handleLogout}/>
             <ContentArea activeMenu={activeMenu}/>
             {/* <button onClick={handleLogout}>Logout</button> */}

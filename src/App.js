@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import OrgChart from "./pages/OrgChart";
-import FullCalendarF from "./pages/FullCalendarF";
+import Login from "./pages/Login/Login";
+import Home from "./pages/Main/Home";
+import OrgChart from "./pages/OrganizationChart/OrgChart";
+import FullCalendarF from "./pages/Schedule/FullCalendarF";
 // import EmpDetail from "./pages/EmpDetail";
-import Approval from "./pages/Approval";
-import DocAddPage from "./pages/DocAddPage";
+import Approval from "./pages/Approval/Approval";
+import DocAddPage from "./pages/Approval/DocTemplate/DocAddPage";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

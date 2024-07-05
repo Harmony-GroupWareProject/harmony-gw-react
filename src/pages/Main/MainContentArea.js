@@ -1,11 +1,11 @@
 import React from 'react';
-import FullCalendarF from './FullCalendarF'
-import Approval from './Approval'
-import OrgChart from './OrgChart'
-import './css/ContentArea.css';
-import DocAddPage from './DocAddPage';
+import FullCalendarF from '../Schedule/FullCalendarF'
+import Approval from '../Approval/Approval'
+import OrgChart from '../OrganizationChart/OrgChart'
+import '../css/ContentArea.css';
+import DocAddPage from '../Approval/DocTemplate/DocAddPage';
 
-function ContentArea({ activeMenu }) {
+function MainContentArea({ activeMenu }) {
   const renderContent = () => {
     switch(activeMenu) {
       case 'organization':
@@ -16,8 +16,8 @@ function ContentArea({ activeMenu }) {
         return <Approval />;
       case 'aprtemplate':
         return <DocAddPage/>;
-      default:
-        return <orgChart />;
+      // default:
+      //   return <orgChart />;
     }
   };
 
@@ -28,4 +28,4 @@ function ContentArea({ activeMenu }) {
   );
 }
 
-export default ContentArea;
+export default MainContentArea;

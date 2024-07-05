@@ -12,7 +12,7 @@ const TemplateList = ({ onSelect }) => {
           'Authorization': token
       }
   })
-      .then(response => setTemplates(response.data))
+      .then(response => setTemplates(response.data) & console.log(response))
       .catch(error => console.error('Error fetching templates:', error));
   }, []);
 
@@ -23,6 +23,7 @@ const TemplateList = ({ onSelect }) => {
         {templates.map(template => (
           <li key={template.id}>
             <button onClick={() => onSelect(template.id)}>{template.name}</button>
+            <button onClick={() => console.log(templates)}>찍어보기</button>
           </li>
         ))}
       </ul>

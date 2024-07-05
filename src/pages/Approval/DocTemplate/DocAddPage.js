@@ -1,8 +1,7 @@
 // src/App.js
 import React, { useState } from 'react';
-import TemplateList from '../components/DocTemplate/TempleteList';
-import TemplateEditor from '../components/DocTemplate/TemplateEditor';
-
+import TemplateList from '../../../components/Approval/DocTemplate/TempleteList';
+import TemplateEditor from '../../../components/Approval/DocTemplate/TemplateEditor';
 
 function DocAddPage() {
   const [selectedTemplateId, setSelectedTemplateId] = useState(null);

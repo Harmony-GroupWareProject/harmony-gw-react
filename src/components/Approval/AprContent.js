@@ -1,8 +1,8 @@
 // src/components/Content.js
 import React from 'react';
-import './css/AprContent.css';
+import '../css/AprContent.css';
 
-const Content = () => {
+const AprContent = () => {
   return (
     <div className="content">
       <div className="content-menu">
@@ -26,4 +26,4 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default AprContent;

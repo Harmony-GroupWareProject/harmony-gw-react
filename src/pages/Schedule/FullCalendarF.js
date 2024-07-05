@@ -7,8 +7,8 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import resourceTimeGridPlugin from "@fullcalendar/resource-timegrid";
 import Modal from "react-modal"; // React Modal import
 import axios from "axios";
-import EditEventModal from "../components/EditEventModal";
-import AddEventModal from "../components/AddEventModal";
+import EditEventModal from "../../components/Schedule/EditEventModal";
+import AddEventModal from "../../components/Schedule/AddEventModal";
 
 // Modal의 root element를 지정합니다. 여기서는 'root'로 지정합니다.
 Modal.setAppElement("#root");

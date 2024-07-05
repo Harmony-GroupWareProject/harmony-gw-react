@@ -1,8 +1,8 @@
 // src/components/Sidebar.js
 import React from 'react';
-import './css/AprSidebar.css';
+import '../css/AprSidebar.css';
 
-const Sidebar = () => {
+const AprSidebar = () => {
   return (
     <div className="sidebar-container">
       <div className="sidebar-category">
@@ -20,4 +20,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default AprSidebar;

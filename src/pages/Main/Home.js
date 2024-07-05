@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"
-import MainMenuSidebar from "../components/MainMenuSidebar";
-import './css/Home.css'
+import MainMenuSidebar from "../../components/Main/MainMenuSidebar";
+import '../css/Home.css'
 import ContentArea from "./MainContentArea";
 
 const Home = ({ onLogout }) => {

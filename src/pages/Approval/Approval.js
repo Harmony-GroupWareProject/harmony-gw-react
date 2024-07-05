@@ -21,7 +21,9 @@ const Approval = () => {
             <AprContent />
           </>
         ) : (
+          <>
           <TemplateEditor templateId={selectedTemplateId} />
+          </>
         )}
       </div>
     </div>

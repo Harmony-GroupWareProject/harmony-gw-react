@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // useNavigate import
+import { useNavigate } from 'react-router-dom';
 import '../../css/TemplateModal.css';
 
 Modal.setAppElement('#root');
 
 const TemplateModal = ({ isOpen, modalClose, onSelect }) => {
   const [templates, setTemplates] = useState([]);
+  const [selectedTemplateId, setSelectedTemplateId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,6 +22,19 @@ const TemplateModal = ({ isOpen, modalClose, onSelect }) => {
     .catch(error => console.error('Error fetching templates:', error));
   }, []);
 
+  const handleTemplateSelect = (templateId) => {
+    console.log('Template selected:', templateId);
+    setSelectedTemplateId(templateId);
+  };
+
+  const handleConfirm = () => {
+    if (selectedTemplateId) {
+      console.log('Confirm clicked with templateId:', selectedTemplateId);
+      onSelect(selectedTemplateId);
+      modalClose();
+      // navigate(`/templates/${selectedTemplateId}`); // 페이지 이동
+    }
+  };
 
   return (
     <Modal
@@ -39,7 +53,12 @@ const TemplateModal = ({ isOpen, modalClose, onSelect }) => {
           <ul>
             {templates.map(template => (
               <li key={template.id}>
-                <button className="doc-template" onClick={() => onSelect(template.id)}>{template.name}</button>
+                <button
+                  className={`doc-template ${selectedTemplateId === template.id ? 'selected' : ''}`}
+                  onClick={() => handleTemplateSelect(template.id)}
+                >
+                  {template.name}
+                </button>
               </li>
             ))}
           </ul>
@@ -77,7 +96,7 @@ const TemplateModal = ({ isOpen, modalClose, onSelect }) => {
         </div>
       </div>
       <div className="template-modal-footer">
-        <button onClick={modalClose}>확인</button>
+        <button onClick={handleConfirm}>확인</button>
         <button onClick={modalClose}>취소</button>
       </div>
     </Modal>

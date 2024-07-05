@@ -1,0 +1,39 @@
+/* src/components/css/Sidebar.css */
+
+.sidebar-container {
+  width: 200px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.sidebar-category {
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.sidebar-title {
+  font-size: 18px;
+  margin: 0;
+}
+
+.sidebar {
+  padding: 10px;
+}
+
+.sidebar-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-item:hover {
+  background-color: #d1cbcb;
+}
+
+
+.sidebar-list li {
+  margin: 10px 0;
+  cursor: pointer;
+}

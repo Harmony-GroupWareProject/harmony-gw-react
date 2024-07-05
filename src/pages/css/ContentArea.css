@@ -1,0 +1,5 @@
+.content-area {
+    flex-grow: 1;
+    padding: 20px;
+    border-left: 1px solid #ccc;
+  }

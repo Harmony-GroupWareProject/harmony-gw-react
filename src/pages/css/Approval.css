@@ -1,0 +1,57 @@
+src/styles.css
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+/* .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f4f4f4;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar-item {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item span {
+  margin-right: 10px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.content-menu button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.content-message {
+  margin: 20px 0;
+}
+
+.content-search {
+  display: flex;
+  align-items: center;
+}
+
+.content-search select,
+.content-search input {
+  margin-right: 10px;
+  padding: 5px;
+} */

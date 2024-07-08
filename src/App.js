@@ -14,7 +14,8 @@ import Register from "./pages/Register/Register";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
-
+  const [role, setRole] = useState("");
+ 
   const navigate = useNavigate();
 
   // 컴포넌트가 마운트될 때 로컬 스토리지에서 토큰 유무를 확인하여 로그인 상태를 설정
@@ -26,11 +27,13 @@ const App = () => {
     }
   }, []);
 
-  const handleLogin = (token) => {
+  const handleLogin = (token, role) => {
     setIsLoggedIn(true);
     setToken(token);
+    setRole(role);
     // 토큰을 저장소에 저장
     localStorage.setItem("token", token);
+    localStorage.setItem("role", role);
     navigate("/home");
   };
 

@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../css/MenuSidebar.css';
 
 function MainMenuSidebar({ setActiveMenu, handleLogout }) {
+  const role = localStorage.getItem("role");
+
+  useEffect(() => {
+    console.log("role 값 전달 확인" + JSON.stringify(role));
+  })
+  // const role2 = 'ADMIN';
   return (
     <div className="menu-sidebar">
       <div className="logo-container">
@@ -9,8 +15,9 @@ function MainMenuSidebar({ setActiveMenu, handleLogout }) {
         <h3 id='menu-title'>Harmony</h3>
       </div>
       <ul>
-        <li><button onClick={() => setActiveMenu('register')}>
-            <span className='ulList'>회원 등록</span></button></li>
+        {role==='ADMIN' ? <li><button onClick={() => setActiveMenu('register')}>
+        <span className='ulList'>회원 등록</span></button></li> : ''}
+        
         <li><button onClick={() => setActiveMenu('schedule')}>
           <span className='ulList'>일정</span></button></li>
         <li><button onClick={() => setActiveMenu('approval')}>

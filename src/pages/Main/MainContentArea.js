@@ -4,6 +4,7 @@ import Approval from '../Approval/Approval'
 import OrgChart from '../OrganizationChart/OrgChart'
 import '../css/ContentArea.css';
 import DocAddPage from '../Approval/DocTemplate/DocAddPage';
+import Register from '../Register/Register';
 
 function MainContentArea({ activeMenu }) {
   const renderContent = () => {
@@ -14,8 +15,8 @@ function MainContentArea({ activeMenu }) {
         return <FullCalendarF/>;
       case 'approval':
         return <Approval />;
-      case 'aprtemplate':
-        return <DocAddPage/>;
+      case 'register':
+        return <Register/>;
       // default:
       //   return <orgChart />;
     }

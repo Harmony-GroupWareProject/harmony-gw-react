@@ -26,7 +26,7 @@ const TemplateEditor = ({ templateId }) => {
 
   useEffect(() => {
     if (template) {
-      const editorElements = document.querySelectorAll('.comp_editor');
+      const editorElements = document.querySelectorAll('.editor');
       editorElements.forEach(element => {
         const editorContainer = document.createElement('div');
         element.parentNode.replaceChild(editorContainer, element);
@@ -53,10 +53,12 @@ const TemplateEditor = ({ templateId }) => {
   return (
     <div>
       {template ? (
-        <div>
-          {/* <h2>{template.name}</h2> */}
-          <div dangerouslySetInnerHTML={{ __html: content }} />
-        </div>
+        <>
+          <div>
+            {/* <h2>{template.name}</h2> */}
+            <div dangerouslySetInnerHTML={{ __html: content }} />
+          </div>
+        </>
       ) : (
         <p>Select a template to view</p>
       )}

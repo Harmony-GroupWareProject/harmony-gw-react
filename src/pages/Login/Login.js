@@ -20,7 +20,7 @@ const Login = ({ onLogin }) => {
         console.log(response.data);
         console.log(role);
         console.log('login ',token);
-        onLogin(token, role); // 로그인 성공 시 토큰을 상위 컴포넌트로 전달
+        onLogin(token, role, empNo); // 로그인 성공 시 토큰을 상위 컴포넌트로 전달
       } else {
         alert("사원번호와 비밀번호를 확인하세요.");
       }

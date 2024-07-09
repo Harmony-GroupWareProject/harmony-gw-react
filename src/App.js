@@ -27,13 +27,14 @@ const App = () => {
     }
   }, []);
 
-  const handleLogin = (token, role) => {
+  const handleLogin = (token, role, empNo) => {
     setIsLoggedIn(true);
     setToken(token);
     setRole(role);
     // 토큰을 저장소에 저장
     localStorage.setItem("token", token);
     localStorage.setItem("role", role);
+    localStorage.setItem("empNo", empNo);
     navigate("/home");
   };
 

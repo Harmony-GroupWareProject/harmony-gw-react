@@ -23,38 +23,40 @@ const FullCalendarF = () => {
   useEffect(() => {
     const fetchScheduleList = async () => {
         const token = localStorage.getItem("token");
+        const empNo = localStorage.getItem("empNo");
         try {
-            const response = await axios.get('http://localhost:9000/scheduleList', {
-                headers: {
-                    'Authorization': token
-                }
-            });
-            const data = response.data.map(event => ({
-              id: event.scheduleIdx,
-              title: event.title,
-              start: event.start,
-              end: event.end,
-              allDay: event.allDay
+          const response = await axios.get(`http://localhost:9000/personalScheduleList?empNo=${empNo}`, {
+            headers: {
+              'Authorization': token
+            }
+          });
+          const data = response.data.map(event => ({
+            id: event.scheduleIdx,
+            title: event.title,
+            start: event.start,
+            end: event.end,
+            allDay: event.allDay
           }));
           console.log(data);
           setEvents(data);
-          } catch (error) {
-            console.error('Error fetching schedule data !!!!:', error);
+        } catch (error) {
+          console.error('Error fetching schedule data !!!!:', error);
         }
-    };
-
-    fetchScheduleList();
-  }, []);
-
-  // 이벤트를 서버에 저장하는 함수(1개)
-  const saveEventsToServer = async (newEvent) => {
-    const token = localStorage.getItem("token");
+      };
+      
+      fetchScheduleList();
+    }, []);
+    
+    // 이벤트를 서버에 저장하는 함수(1개)
+    const saveEventsToServer = async (newEvent) => {
+      const token = localStorage.getItem("token");
+      const empNo = localStorage.getItem("empNo");
     if (!token) {
       console.error('Error: No token found in localStorage');
       return;
     }
     try {
-      const response = await axios.post('http://localhost:9000/scheduleSave', JSON.stringify(newEvent), {
+      const response = await axios.post('http://localhost:9000/scheduleSave', JSON.stringify({...newEvent, empNo:empNo, scheduleType:2}), {
         headers: {
           'Authorization': token,
           'Content-Type': 'application/json' // Content-Type 설정

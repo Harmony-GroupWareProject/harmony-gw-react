@@ -10,6 +10,7 @@ import FullCalendarF from "./pages/Schedule/FullCalendarF";
 import Approval from "./pages/Approval/Approval";
 import DocAddPage from "./pages/Approval/DocTemplate/DocAddPage";
 import Register from "./pages/Register/Register";
+import TemplateEditor from "./components/Approval/DocTemplate/TemplateEditor";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -70,7 +71,7 @@ const App = () => {
         <Route path="/fullcalendarf" element={<FullCalendarF />} />
         <Route path="/approval" element={<Approval />} />
         <Route path="/register" element={<Register />} />  
-        {/* <Route path="/aprtemplate" element={<DocAddPage />} /> */}
+        <Route path="/templateeditor" element={<TemplateEditor />}/>
 
         {/* <Route path="/emp-detail/:empNo" element={<EmpDetail />} /> */}
       </Routes>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../css/TemplateModal.css';
 
 Modal.setAppElement('#root');
@@ -18,7 +18,7 @@ const TemplateModal = ({ isOpen, modalClose, onSelect }) => {
         'Authorization': token
       }
     })
-    .then(response => setTemplates(response.data))
+    // .then(response => setTemplates(response.data))
     .catch(error => console.error('Error fetching templates:', error));
   }, []);
 
@@ -27,14 +27,20 @@ const TemplateModal = ({ isOpen, modalClose, onSelect }) => {
     setSelectedTemplateId(templateId);
   };
 
-  const handleConfirm = () => {
-    if (selectedTemplateId) {
-      console.log('Confirm clicked with templateId:', selectedTemplateId);
-      onSelect(selectedTemplateId);
-      modalClose();
-      // navigate(`/templates/${selectedTemplateId}`); // 페이지 이동
-    }
-  };
+  // const handleConfirm = () => {
+  //   if (selectedTemplateId) {
+  //     console.log('Confirm clicked with templateId:', selectedTemplateId);
+  //     onSelect(selectedTemplateId);
+  //     modalClose();
+  //     // navigate(`/templates/${selectedTemplateId}`); // 페이지 이동
+  //   }
+  //   navigate('/templateeditor');
+  // };
+
+  const handleLink = () => {
+    modalClose();
+    navigate("/templateeditor"); // 페이지 이동
+  }
 
   return (
     <Modal
@@ -51,7 +57,12 @@ const TemplateModal = ({ isOpen, modalClose, onSelect }) => {
       <div className="template-modal-body">
         <div className="template-modal-sidebar">
           <ul>
-            {templates.map(template => (
+            <li>
+                <button>
+                  업무협조문
+                </button>
+            </li>
+            {/* {templates.map(template => (
               <li key={template.id}>
                 <button
                   className={`doc-template ${selectedTemplateId === template.id ? 'selected' : ''}`}
@@ -60,7 +71,7 @@ const TemplateModal = ({ isOpen, modalClose, onSelect }) => {
                   {template.name}
                 </button>
               </li>
-            ))}
+            ))} */}
           </ul>
         </div>
         <div className="template-modal-content">
@@ -96,7 +107,8 @@ const TemplateModal = ({ isOpen, modalClose, onSelect }) => {
         </div>
       </div>
       <div className="template-modal-footer">
-        <button onClick={handleConfirm}>확인</button>
+        {/* <button onClick={handleConfirm}>확인</button> */}
+        <button onClick={handleLink}>확인</button>
         <button onClick={modalClose}>취소</button>
       </div>
     </Modal>

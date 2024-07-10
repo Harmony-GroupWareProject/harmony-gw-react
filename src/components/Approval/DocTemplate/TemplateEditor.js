@@ -3,65 +3,72 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import DocPageCoop from './DocPageCoop';
 
 const TemplateEditor = ({ templateId }) => {
-  const [template, setTemplate] = useState(null);
-  const [content, setContent] = useState('');
+  // const [template, setTemplate] = useState(null);
+  // const [content, setContent] = useState('');
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (templateId) {
-      axios.get(`http://localhost:9000/templates/${templateId}`, {
-        headers: {
-          'Authorization': token
-        }
-      })
-        .then(response => {
-          setTemplate(response.data);
-          setContent(response.data.content);
-        })
-        .catch(error => console.error('Error fetching template:', error));
-    }
-  }, [templateId]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (templateId) {
+  //     axios.get(`http://localhost:9000/templates/${templateId}`, {
+  //       headers: {
+  //         'Authorization': token
+  //       }
+  //     })
+  //       .then(response => {
+  //         setTemplate(response.data);
+  //         setContent(response.data.content);
+  //       })
+  //       .catch(error => console.error('Error fetching template:', error));
+  //   }
+  // }, [templateId]);
 
-  useEffect(() => {
-    if (template) {
-      const editorElements = document.querySelectorAll('.editor');
-      editorElements.forEach(element => {
-        const editorContainer = document.createElement('div');
-        element.parentNode.replaceChild(editorContainer, element);
 
-        ReactDOM.render(
-          <ReactQuill
-            value={element.innerHTML}
-            onChange={(value) => element.innerHTML = value}
-            modules={{
-              toolbar: [
-                [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                ['bold', 'italic', 'underline'],
-                ['link', 'image']
-              ],
-            }}
-          />,
-          editorContainer
-        );
-      });
-    }
-  }, [template]);
+  // const saveDocHandler = async () => {
+  //   const token = localStorage.getItem("token");
+  //   const empNo = localStorage.getItem("empNo");
+  //   const docContent = document.getElementById('docContent').innerHTML;
+
+  
+  //   const save = {
+  //     docType: "DFS",
+  //     writer: empNo,
+  //     docTitle:"afgagf",
+  //     docContent: docContent,
+  //     references: "Daff,dfa,df,af",
+  //     approvers: "Daff,dfa,df,af",
+  //   }
+  //   try {
+  //     const response = await axios.post('http://localhost:9000/saveApprovalDoc', save, {
+  //       headers: {
+  //         // 'Authorization': `Bearer ${token}`,
+  //         'Content-Type': 'application/json'
+  //       }
+  //     });
+      
+      
+  //     console.log("success");
+  //   } catch (error) {
+  //    console.log("fail");
+     
+  //   }
+  // };
 
   return (
     <div>
-      {template ? (
+      <DocPageCoop />
+      {/* {template ? (
         <>
-          <div>
-            {/* <h2>{template.name}</h2> */}
+          <div id="docContent">
             <div dangerouslySetInnerHTML={{ __html: content }} />
           </div>
         </>
       ) : (
         <p>Select a template to view</p>
       )}
+      <button onClick={saveDocHandler}>저장</button> */}
     </div>
   );
 };

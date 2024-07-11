@@ -16,7 +16,7 @@ function MainMenuSidebar({ setActiveMenu, handleLogout }) {
       </div>
       <ul>
         {role==='ADMIN' ? <li><button onClick={() => setActiveMenu('register')}>
-        <span className='ulList'>회원 등록</span></button></li> : ''}
+        <span className='ulList'>직원 등록</span></button></li> : ''}
         
         <li><button onClick={() => setActiveMenu('schedule')}>
           <span className='ulList'>일정</span></button></li>
@@ -24,6 +24,8 @@ function MainMenuSidebar({ setActiveMenu, handleLogout }) {
           <span className='ulList'>결재</span></button></li>
         <li><button onClick={() => setActiveMenu('organization')}>
           <span className='ulList'>조직도 사원</span></button></li>
+        <li><button onClick={() => setActiveMenu('noticelist')}>
+          <span className='ulList'>공지사항</span></button></li>
       </ul>
       <button id="logout-Button" onClick={handleLogout}>Logout</button>
     </div>

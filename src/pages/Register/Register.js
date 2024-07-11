@@ -94,7 +94,7 @@
 
     return (
       <div className="register">
-        <h2>회원등록</h2>
+        <h2>직원 등록</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>사원번호</label>

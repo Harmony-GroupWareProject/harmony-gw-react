@@ -6,8 +6,10 @@ import '../css/ContentArea.css';
 import Register from '../Register/Register';
 import EmployeeLists from '../Register/EmployeeLists';
 import styled from 'styled-components';
+import NoticeList from '../NoticeBoard/NoticeList';
+import NoticeDetail from '../NoticeBoard/NoticeDetail';
 
-function MainContentArea({ activeMenu }) {
+function MainContentArea({ activeMenu, setActiveMenu }) {
   const renderContent = () => {
     switch(activeMenu) {
       case 'organization':
@@ -21,6 +23,10 @@ function MainContentArea({ activeMenu }) {
                   <Register/>
                   <EmployeeLists />
                </RegisterForm>;
+      case 'noticelist':
+        return <NoticeList setActiveMenu={setActiveMenu}/>
+      case 'noticedetail':
+        return <NoticeDetail />
       // default:
       //   return <orgChart />;
     }

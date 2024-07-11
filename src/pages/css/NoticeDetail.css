@@ -1,0 +1,63 @@
+.notice-detail {
+    padding: 40px 0;
+  }
+  
+  .detail-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .detail-table th, .detail-table td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .detail-table th {
+    width: 20%;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+  
+  .detail-table td {
+    text-align: left;
+  }
+  
+  .detail-table tr:last-child td {
+    height: 200px; /* 내용 칸을 더 넓게 설정 */
+    vertical-align: top; /* 내용이 상단부터 시작하도록 설정 */
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    margin-top: 10px;
+  }
+  
+  .button-group .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 400;
+    background: #f0f0f0;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: all 0.3s;
+    margin-right: 35px; /* 버튼 간의 간격 설정 (예: 20px) */
+  }
+  
+  .button-group .btn:last-child {
+    margin-right: 0; /* 마지막 버튼의 마진 제거 */
+  }
+  
+  .button-group .btn:hover, .button-group .btn:focus {
+    background: #e0e0e0;
+    border-color: #c0c0c0;
+    color: #333;
+  }
+  

@@ -150,6 +150,12 @@ const FullCalendarF = () => {
   const [newEndTime, setNewEndTime] = useState("00:00");
   const [newAllDay, setNewAllDay] = useState(false);
 
+  // 확인용
+  // newAllDay가 변경될 때마다 값을 출력하는 useEffect 추가
+  useEffect(() => {
+    console.log("new All Day 값 : " + JSON.stringify(newAllDay));
+  }, [newAllDay]);
+
   //수정시 필요한 scheduleIdx 변수
   const [scheduleIdx, setScheduleIdx] = useState(0);
 
@@ -162,7 +168,13 @@ const FullCalendarF = () => {
   // 범위 선택(여러 날짜 선택시) 호출 함수
   const handleSelectedDates = (info) => {
     const endDate = new Date(info.endStr);
-    endDate.setDate(endDate.getDate() -1);
+    // if(newAllDay == false) {
+    //   endDate.setDate(endDate.getDate() -1);
+    // } else {
+    //   endDate.setDate(endDate.getDate());
+    // }
+    endDate.setDate(newAllDay ? endDate.getDate() + 1 : endDate.getDate()-1);
+    console.log("new All Day 값 : " + JSON.stringify(newAllDay));
     const adjustedEndDate = endDate.toISOString().split('T')[0];
     setSelectedDateRange({ start: info.startStr, end: adjustedEndDate });
     setIsAddModalOpen(true);
@@ -186,14 +198,47 @@ const FullCalendarF = () => {
   };
 
   // modal에서 '추가' 버튼 클릭시 호출시킬 함수.
+  // const handleAddButton = async () => {
+  //   if (newEventTitle) {
+  //     const newEvent = {
+  //       title: newEventTitle,
+  //       start: `${selectedDateRange.start}T${newStartTime}`,
+  //       // end: `${selectedDateRange.end}T${newEndTime}`,
+  //       end: newAllDay ? `${selectedDateRange.end}T23:59:59` : `${selectedDateRange.end}T${newEndTime}`,
+  //       allDay: newAllDay,
+  //     };
+  //     const data = await saveEventsToServer(newEvent);
+  //     const saveEvent = {
+  //       id: data.scheduleIdx,
+  //       title: data.title,
+  //       start: data.start,
+  //       end: data.end,
+  //       allDay: data.allDay
+  //   };
+
+  //     console.log(saveEvent);
+  //     setEvents((prevEvents) => [...prevEvents, saveEvent]);
+  //     handleModalClose();
+  //   }
+  // };
+  
+  // modal에서 '추가' 버튼 클릭시 호출시킬 함수. +1 추가
   const handleAddButton = async () => {
     if (newEventTitle) {
+      // 하루 종일 이벤트일 경우 끝 날짜를 하루 추가합니다.
+      const adjustedEndDate = newAllDay
+        ? new Date(new Date(selectedDateRange.end).setDate(new Date(selectedDateRange.end).getDate() + 1))
+            .toISOString()
+            .split("T")[0]
+        : selectedDateRange.end;
+  
       const newEvent = {
         title: newEventTitle,
         start: `${selectedDateRange.start}T${newStartTime}`,
-        end: `${selectedDateRange.end}T${newEndTime}`,
+        end: newAllDay ? `${adjustedEndDate}T00:00:00` : `${selectedDateRange.end}T${newEndTime}`,
         allDay: newAllDay,
       };
+  
       const data = await saveEventsToServer(newEvent);
       const saveEvent = {
         id: data.scheduleIdx,
@@ -201,13 +246,14 @@ const FullCalendarF = () => {
         start: data.start,
         end: data.end,
         allDay: data.allDay
-    };
-
+      };
+  
       console.log(saveEvent);
       setEvents((prevEvents) => [...prevEvents, saveEvent]);
       handleModalClose();
     }
   };
+  
 
   // 이미 일정이 있는 날짜를 클릭했을시 호출 함수
   const handleEventClick = (e) => {
@@ -245,11 +291,18 @@ const FullCalendarF = () => {
     if (newEventTitle) {
       const startTime = newStartTime || '00:00'
       const endTime = newEndTime || '00:00'
+
+      const adjustedEndDate = newAllDay
+      ? new Date(new Date(newEndDate).setDate(new Date(newEndDate).getDate() + 1))
+          .toISOString()
+          .split("T")[0]
+      : newEndDate;
+
       const updatedEvent = {
         scheduleIdx: scheduleIdx,
         title: newEventTitle,
         start: `${newStartDate}T${startTime}`,
-        end: `${newEndDate}T${endTime}`,
+        end: newAllDay ? `${adjustedEndDate}T00:00:00` : `${newEndDate}T${endTime}`,
         allDay: newAllDay
       };
       console.log(updatedEvent);
@@ -274,7 +327,7 @@ const FullCalendarF = () => {
   return (
     <div>
       <div style={{
-        maxWidth: "1000px",
+        maxWidth: "800px",
         margin: "0 auto",
         padding: "20px",
         boxSizing: "border-box",
@@ -308,8 +361,8 @@ const FullCalendarF = () => {
           eventAdd={(obj)=> {console.log(obj)}}
           eventChange={(obj)=> {console.log(obj)}}
           eventRemove={(obj)=> {console.log(obj)}}
-          slotMinTime='00:00'
-          slotMaxTime='24:00'
+          // slotMinTime='00:00'
+          // slotMaxTime='24:00'
           editable={true}
         />
       </div>

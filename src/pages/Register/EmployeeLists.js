@@ -35,7 +35,7 @@ const EmployeeLists = () => {
 
   return (
     <div className="employee-list">
-      <h2>회원 목록</h2>
+      <h2>직원 목록</h2>
       <table>
         <thead>
           <tr>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import MainMenuSidebar from "../../components/Main/MainMenuSidebar";
 import '../css/Home.css'
-import ContentArea from "./MainContentArea";
+import MainContentArea from "./MainContentArea";
 
 const Home = ({ onLogout }) => {
 
@@ -16,9 +16,10 @@ const Home = ({ onLogout }) => {
         <div className="main-container">
             <MainMenuSidebar setActiveMenu={setActiveMenu} 
                         handleLogout={handleLogout}/>
-            <ContentArea activeMenu={activeMenu}/>
+            <MainContentArea activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
         </div>
     );
 };
 
 export default Home;
+

@@ -4,11 +4,11 @@ import '../css/NoticeDetail.css';
 const NoticeDetail = ({ notice, setActiveMenu }) => {
   if (!notice) {
     notice = {
-      id: 0,
-      title: '기본 공지사항 제목',
-      content: '여기에 공지사항 내용이 들어갑니다.',
-      empNo: '0000',
-      date: '2022-01-01',
+      id: 5,
+      title: '회사 워크샵 안내',
+      content: '회사의 연례 워크샵이 다음 달에 개최됩니다.',
+      empNo: 'admin',
+      date: '2024-10-04',
     };
   }
 
@@ -49,12 +49,12 @@ const NoticeDetail = ({ notice, setActiveMenu }) => {
           </tr>
         </tbody>
       </table>
-      <div className="button-group">
+      {/* <div className="button-group">
         <button className="btn" onClick={handleCreate}>새 글 작성</button>
         <button className="btn" onClick={handleEdit}>글 수정</button>
         <button className="btn" onClick={handleDelete}>글 삭제</button>
         <button className="btn" onClick={() => setActiveMenu('noticeList')}>목록으로</button>
-      </div>
+      </div> */}
     </div>
   );
 };

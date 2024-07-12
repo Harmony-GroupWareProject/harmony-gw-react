@@ -576,8 +576,8 @@ function App() {
           </tr>
         </tbody>
       </table>
-    </div>
-    <button onClick={saveDocHandler}>저장</button>
+    </div><br/>
+    {/* <button onClick={saveDocHandler}>저장</button> */}
     </>
   );
 }

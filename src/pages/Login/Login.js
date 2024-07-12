@@ -17,11 +17,11 @@ const Login = ({ onLogin }) => {
       if (response.status === 200) {
         const token = response.headers.authorization.replace('Bearer ', ''); // 서버에서 토큰을 response로 받아와 사용
         const role = response.data.role;
+        onLogin(token, role, empNo); // 로그인 성공 시 토큰을 상위 컴포넌트로 전달
         console.log(response.data);
         console.log(role);
         console.log('login ',token);
-        onLogin(token, role, empNo); // 로그인 성공 시 토큰을 상위 컴포넌트로 전달
-      } else {
+      } else {    
         alert("사원번호와 비밀번호를 확인하세요.");
       }
     } catch (error) {

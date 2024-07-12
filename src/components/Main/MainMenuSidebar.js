@@ -20,12 +20,12 @@ function MainMenuSidebar({ setActiveMenu, handleLogout }) {
         
         <li><button onClick={() => setActiveMenu('schedule')}>
           <span className='ulList'>일정</span></button></li>
-        <li><button onClick={() => setActiveMenu('approval')}>
-          <span className='ulList'>결재</span></button></li>
         <li><button onClick={() => setActiveMenu('organization')}>
           <span className='ulList'>조직도 사원</span></button></li>
         <li><button onClick={() => setActiveMenu('noticelist')}>
           <span className='ulList'>공지사항</span></button></li>
+        <li><button onClick={() => setActiveMenu('approval')}>
+          <span className='ulList'>결재</span></button></li>
       </ul>
       <button id="logout-Button" onClick={handleLogout}>Logout</button>
     </div>

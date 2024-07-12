@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import DocPageCoop from './DocPageCoop';
+import MainMenuSidebar from '../../Main/MainMenuSidebar';
+import styled from 'styled-components';
 
 const TemplateEditor = ({ templateId }) => {
   // const [template, setTemplate] = useState(null);
@@ -58,6 +60,8 @@ const TemplateEditor = ({ templateId }) => {
 
   return (
     <div>
+    <RegisterForm>
+      <MainMenuSidebar></MainMenuSidebar>
       <DocPageCoop />
       {/* {template ? (
         <>
@@ -69,8 +73,16 @@ const TemplateEditor = ({ templateId }) => {
         <p>Select a template to view</p>
       )}
       <button onClick={saveDocHandler}>저장</button> */}
+          
+    </RegisterForm>
     </div>
   );
 };
 
 export default TemplateEditor;
+
+export const RegisterForm=styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+`

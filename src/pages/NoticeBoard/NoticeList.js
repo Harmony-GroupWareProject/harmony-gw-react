@@ -103,7 +103,7 @@ const NoticeList = ({setActiveMenu}) => {
           </div>
         </div>
 
-        <div id="board-search">
+        {/* <div id="board-search">
           <div className="container">
             <div className="search-window">
               <form>
@@ -121,7 +121,7 @@ const NoticeList = ({setActiveMenu}) => {
               </form>
             </div>
           </div>
-        </div>
+        </div> */}
         <div id="board-list">
           <div className="container">
             <table className="board-table">
@@ -135,7 +135,7 @@ const NoticeList = ({setActiveMenu}) => {
               <tbody>
                 {filteredNotices.map((notice, index) => (
                   <tr key={notice.noticeIdx}>
-                    <td>{index + 1}</td>
+                    <td>{notice.noticeIdx}</td>
                     <th>
                       <a onClick={() => setActiveMenu('noticedetail')}>{notice.title}</a>
                       <p>{notice.content}</p>
@@ -148,7 +148,7 @@ const NoticeList = ({setActiveMenu}) => {
           </div>
         </div>
       </section>
-      <button onClick={() => setActiveMenu('noticedetail')}>상세보기페이지</button>
+      {/* <button onClick={() => setActiveMenu('noticedetail')}>상세보기페이지</button> */}
     </div>
   );
 };
